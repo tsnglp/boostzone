@@ -1,0 +1,146 @@
+<% content_for :title, "BoostZone | Smart IT Solutions in NSW" %>
+
+<section class="bg-gradient-to-br from-primary via-dark to-accent/80 text-white">
+  <div class="mx-auto grid w-full max-w-7xl gap-14 px-6 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
+    <div>
+      <span class="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1 text-sm font-medium text-slate-100">NSW-based IT services for ambitious Australian businesses</span>
+      <h1 class="mt-8 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">Powering Your Business with Smart IT Solutions</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-200">BoostZone helps organisations across NSW and Australia build stronger digital foundations with modern websites, dependable support, cloud delivery, and practical automation.</p>
+      <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+        <%= link_to "Get Started", contact_path, class: "inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-semibold text-primary transition duration-200 hover:bg-light" %>
+        <%= link_to "Our Services", services_path, class: "inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3.5 text-base font-semibold text-white transition duration-200 hover:bg-white/10" %>
+      </div>
+    </div>
+
+    <div class="rounded-[2rem] border border-white/10 bg-white/10 p-8 shadow-2xl shadow-dark/30 backdrop-blur">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">What we deliver</p>
+      <div class="mt-8 space-y-6">
+        <div class="rounded-2xl bg-dark/50 p-5">
+          <div class="flex items-center gap-3">
+            <span class="rounded-2xl bg-accent/15 p-3 text-accent"><%= icon(:website, classes: "h-6 w-6") %></span>
+            <div>
+              <h2 class="text-lg font-semibold">Web, apps, and digital platforms</h2>
+              <p class="mt-1 text-sm text-slate-300">Build, refresh, and scale business-critical digital experiences.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-dark/50 p-5">
+          <div class="flex items-center gap-3">
+            <span class="rounded-2xl bg-accent/15 p-3 text-accent"><%= icon(:devops, classes: "h-6 w-6") %></span>
+            <div>
+              <h2 class="text-lg font-semibold">Reliable cloud and deployment pipelines</h2>
+              <p class="mt-1 text-sm text-slate-300">Deploy faster with better visibility, security, and operational control.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-dark/50 p-5">
+          <div class="flex items-center gap-3">
+            <span class="rounded-2xl bg-accent/15 p-3 text-accent"><%= icon(:support, classes: "h-6 w-6") %></span>
+            <div>
+              <h2 class="text-lg font-semibold">Ongoing support for growing teams</h2>
+              <p class="mt-1 text-sm text-slate-300">Get senior guidance without the overhead of a full in-house IT department.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-dark py-8 text-white">
+  <div class="mx-auto grid w-full max-w-7xl gap-6 px-6 text-center sm:grid-cols-3 lg:px-8">
+    <% @stats.each do |stat| %>
+      <div class="rounded-2xl border border-white/10 bg-white/5 px-6 py-6 shadow-lg shadow-black/10">
+        <p class="text-3xl font-semibold text-accent"><%= stat[:value] %></p>
+        <p class="mt-2 text-sm uppercase tracking-[0.25em] text-slate-300"><%= stat[:label] %></p>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="py-20">
+  <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Services Overview</p>
+      <h2 class="mt-4 text-3xl font-semibold text-dark sm:text-4xl">Solutions designed for modern Australian businesses</h2>
+      <p class="mt-4 text-lg leading-8 text-slate-600">BoostZone combines strategy, delivery, and support to help businesses modernise customer experiences, strengthen operations, and reduce technology friction.</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <% @featured_services.each do |service| %>
+        <article class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition duration-300 group-hover:bg-accent/10 group-hover:text-accent">
+            <%= icon(service[:icon], classes: "h-7 w-7") %>
+          </div>
+          <h3 class="mt-6 text-xl font-semibold text-dark"><%= service[:title] == "IT Support for Small Businesses" ? "IT Support for SMBs" : service[:title] %></h3>
+          <p class="mt-4 text-base leading-7 text-slate-600"><%= service[:summary] %></p>
+          <%= link_to "Learn More", service_anchor_path(service[:slug]), class: "mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-accent" %>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-20">
+  <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Why Choose BoostZone</p>
+      <h2 class="mt-4 text-3xl font-semibold text-dark sm:text-4xl">A practical technology partner for NSW businesses</h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <% @benefits.each do |benefit| %>
+        <div class="rounded-3xl border border-slate-200 bg-light p-8 shadow-sm transition duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-primary/5">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+            <%= icon(benefit[:icon], classes: "h-7 w-7") %>
+          </div>
+          <h3 class="mt-6 text-xl font-semibold text-dark"><%= benefit[:title] %></h3>
+          <p class="mt-4 text-base leading-7 text-slate-600"><%= benefit[:description] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="py-20">
+  <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+    <div class="rounded-[2rem] bg-gradient-to-r from-primary to-dark px-8 py-12 text-white shadow-2xl shadow-primary/20 lg:flex lg:items-center lg:justify-between lg:px-12">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Ready to transform your business?</p>
+        <h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Let’s build the right technology roadmap for your next stage of growth.</h2>
+        <p class="mt-4 text-lg leading-8 text-slate-200">Talk to BoostZone about websites, cloud delivery, support plans, integrations, or digital transformation projects.</p>
+      </div>
+      <div class="mt-8 lg:mt-0 lg:pl-8">
+        <%= link_to "Contact BoostZone", contact_path, class: "inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-dark transition duration-200 hover:bg-white" %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-dark py-20 text-white">
+  <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Testimonials</p>
+      <h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Trusted by business owners across NSW</h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      <% @testimonials.each do |testimonial| %>
+        <blockquote class="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-lg shadow-black/10">
+          <div class="flex gap-1 text-accent">
+            <% 5.times do %>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.073 3.302a1 1 0 00.95.69h3.472c.969 0 1.371 1.24.588 1.81l-2.81 2.041a1 1 0 00-.364 1.118l1.073 3.302c.3.921-.755 1.688-1.54 1.118l-2.81-2.041a1 1 0 00-1.176 0l-2.81 2.041c-.784.57-1.838-.197-1.539-1.118l1.072-3.302a1 1 0 00-.363-1.118L2.98 8.73c-.783-.57-.38-1.81.588-1.81H7.04a1 1 0 00.951-.69l1.058-3.302z" />
+              </svg>
+            <% end %>
+          </div>
+          <p class="mt-6 text-lg leading-8 text-slate-200">“<%= testimonial[:quote] %>”</p>
+          <footer class="mt-6">
+            <p class="font-semibold text-white"><%= testimonial[:name] %></p>
+            <p class="text-sm text-slate-400"><%= testimonial[:company] %></p>
+          </footer>
+        </blockquote>
+      <% end %>
+    </div>
+  </div>
+</section>

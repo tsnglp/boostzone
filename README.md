@@ -1,24 +1,34 @@
-# README
+# BoostZone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Professional Rails 8 website for BoostZone, an NSW-based IT services company serving businesses across Australia.
 
-Things you may want to cover:
+## Stack
 
-* Ruby version
+- Ruby 3.4.5
+- Rails 8.1.3
+- PostgreSQL
+- Tailwind CSS
+- Stimulus + Importmap
 
-* System dependencies
+## Pages
 
-* Configuration
+- `/` — Homepage
+- `/services` — Services overview
+- `/about` — Company profile
+- `/contact` — Contact form
 
-* Database creation
+## Local setup
 
-* Database initialization
+```bash
+bundle install
+bin/rails db:prepare
+bin/dev
+```
 
-* How to run the test suite
+## Useful commands
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+bin/rails tailwindcss:build
+bin/rails routes
+bin/rubocop
+```

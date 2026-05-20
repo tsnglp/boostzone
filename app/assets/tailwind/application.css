@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #1e3a5f;
+  --color-accent: #00b4d8;
+  --color-dark: #0f1e2e;
+  --color-light: #f0f4f8;
+}
+
+@layer base {
+  body {
+    @apply bg-light text-slate-900 antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 25%, white);
+    color: var(--color-dark);
+  }
+}

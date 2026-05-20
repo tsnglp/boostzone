@@ -1,0 +1,94 @@
+<% content_for :title, "BoostZone | Contact" %>
+
+<section class="bg-gradient-to-br from-dark via-primary to-primary/90 py-20 text-white">
+  <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Contact BoostZone</p>
+      <h1 class="mt-4 text-4xl font-semibold sm:text-5xl">Let’s talk about your next IT project</h1>
+      <p class="mt-6 text-lg leading-8 text-slate-200">Tell us what you’re building, fixing, or planning. Our NSW team will review your enquiry and get back to you with clear next steps.</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-20">
+  <div class="mx-auto grid w-full max-w-7xl gap-8 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+    <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm lg:p-10">
+      <h2 class="text-2xl font-semibold text-dark">Send us an enquiry</h2>
+      <p class="mt-3 text-base leading-7 text-slate-600">Complete the form below and we’ll be in touch shortly.</p>
+
+      <%= form_with url: contact_path, method: :post, class: "mt-8 space-y-6" do |form| %>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <%= form.label :name, "Full Name", class: "mb-2 block text-sm font-semibold text-dark" %>
+            <%= form.text_field :name, required: true, class: "w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" %>
+          </div>
+          <div>
+            <%= form.label :email, "Email Address", class: "mb-2 block text-sm font-semibold text-dark" %>
+            <%= form.email_field :email, required: true, class: "w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" %>
+          </div>
+          <div>
+            <%= form.label :phone, "Phone Number", class: "mb-2 block text-sm font-semibold text-dark" %>
+            <%= form.telephone_field :phone, class: "w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" %>
+          </div>
+          <div>
+            <%= form.label :company, "Company", class: "mb-2 block text-sm font-semibold text-dark" %>
+            <%= form.text_field :company, class: "w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :service, "Service Interested In", class: "mb-2 block text-sm font-semibold text-dark" %>
+          <%= form.select :service, options_for_select(@service_options), { prompt: "Select a service" }, class: "w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" %>
+        </div>
+
+        <div>
+          <%= form.label :message, "Project Details", class: "mb-2 block text-sm font-semibold text-dark" %>
+          <%= form.text_area :message, rows: 6, required: true, class: "w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" %>
+        </div>
+
+        <%= form.submit "Submit Enquiry", class: "inline-flex items-center justify-center rounded-full bg-primary px-6 py-3.5 text-base font-semibold text-white transition duration-200 hover:bg-dark" %>
+      <% end %>
+    </div>
+
+    <div class="space-y-8">
+      <div class="rounded-[2rem] bg-dark p-8 text-white shadow-xl shadow-dark/10">
+        <h2 class="text-2xl font-semibold">Contact Information</h2>
+        <div class="mt-8 space-y-5 text-sm text-slate-300">
+          <div class="flex gap-4">
+            <span class="mt-0.5 text-accent"><%= icon(:map, classes: "h-6 w-6") %></span>
+            <div>
+              <p class="font-semibold text-white">Location</p>
+              <p>NSW, Australia</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="mt-0.5 text-accent"><%= icon(:mail, classes: "h-6 w-6") %></span>
+            <div>
+              <p class="font-semibold text-white">Email</p>
+              <a href="mailto:hello@boostzone.com.au" class="transition hover:text-white">hello@boostzone.com.au</a>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="mt-0.5 text-accent"><%= icon(:phone, classes: "h-6 w-6") %></span>
+            <div>
+              <p class="font-semibold text-white">Phone</p>
+              <a href="tel:+61200000000" class="transition hover:text-white">+61 2 XXXX XXXX</a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Response Time</p>
+          <p class="mt-3 text-base leading-7 text-slate-300">We aim to respond to new enquiries within one business day.</p>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
+        <div class="border-b border-slate-200 px-6 py-5">
+          <h3 class="text-lg font-semibold text-dark">Sydney, NSW</h3>
+          <p class="mt-1 text-sm text-slate-600">Serving clients across NSW and Australia.</p>
+        </div>
+        <iframe title="BoostZone location map" src="https://www.google.com/maps?q=Sydney%20NSW%20Australia&z=11&output=embed" class="h-80 w-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>

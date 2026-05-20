@@ -1,0 +1,80 @@
+<% content_for :title, "BoostZone | About Us" %>
+
+<section class="bg-gradient-to-br from-primary via-dark to-dark/95 py-20 text-white">
+  <div class="mx-auto grid w-full max-w-7xl gap-12 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">About BoostZone</p>
+      <h1 class="mt-4 text-4xl font-semibold sm:text-5xl">A trusted technology partner for small and medium businesses</h1>
+      <p class="mt-6 text-lg leading-8 text-slate-200">BoostZone brings together strategy, delivery, and support so business owners can modernise confidently without building a full in-house IT function.</p>
+    </div>
+    <div class="rounded-[2rem] border border-white/10 bg-white/10 p-8 backdrop-blur">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Our Story</p>
+      <p class="mt-5 text-lg leading-8 text-slate-100">BoostZone was founded to help Australian small and medium businesses compete in the digital world without needing a full in-house IT team. Based in NSW, we serve clients across Australia.</p>
+      <p class="mt-4 text-base leading-7 text-slate-300">We focus on practical delivery, plain-language advice, and long-term support so clients can confidently adopt new systems, improve service, and reduce technology friction.</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-20">
+  <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div class="rounded-[2rem] bg-light p-8 shadow-sm ring-1 ring-slate-200">
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-primary">Mission</p>
+        <h2 class="mt-4 text-3xl font-semibold text-dark">Helping businesses unlock better outcomes through smarter technology.</h2>
+        <p class="mt-5 text-base leading-8 text-slate-600">Our mission is to make high-quality IT capability accessible to organisations that need practical execution, dependable support, and honest strategic guidance.</p>
+      </div>
+
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Mission & Values</p>
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          <% @values.each do |value| %>
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
+              <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                <%= icon(value[:icon], classes: "h-7 w-7") %>
+              </div>
+              <h3 class="mt-6 text-xl font-semibold text-dark"><%= value[:title] %></h3>
+              <p class="mt-4 text-base leading-7 text-slate-600"><%= value[:description] %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-20">
+  <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Why NSW businesses choose us</p>
+      <h2 class="mt-4 text-3xl font-semibold text-dark sm:text-4xl">Grounded, responsive, and focused on business value</h2>
+      <p class="mt-4 text-lg leading-8 text-slate-600">We understand that growing companies need technology partners who can move quickly, communicate clearly, and keep outcomes aligned with day-to-day business priorities.</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <% @nsw_reasons.each do |reason| %>
+        <div class="rounded-3xl border border-slate-200 bg-light p-8 shadow-sm">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+            <%= icon(reason[:icon], classes: "h-7 w-7") %>
+          </div>
+          <h3 class="mt-6 text-xl font-semibold text-dark"><%= reason[:title] %></h3>
+          <p class="mt-4 text-base leading-7 text-slate-600"><%= reason[:description] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="py-20">
+  <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+    <div class="rounded-[2rem] bg-gradient-to-r from-primary to-dark px-8 py-12 text-white shadow-2xl shadow-primary/20 lg:flex lg:items-center lg:justify-between lg:px-12">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Let’s work together</p>
+        <h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Need a reliable IT partner for your next project or ongoing support plan?</h2>
+        <p class="mt-4 text-lg leading-8 text-slate-200">Speak with BoostZone about your goals and we’ll map out a practical path forward.</p>
+      </div>
+      <div class="mt-8 lg:mt-0 lg:pl-8">
+        <%= link_to "Contact Us", contact_path, class: "inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-dark transition duration-200 hover:bg-white" %>
+      </div>
+    </div>
+  </div>
+</section>
