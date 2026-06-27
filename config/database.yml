@@ -90,6 +90,7 @@ production:
     database: boostzone_production
     username: boostzone
     password: <%= ENV["BOOSTZONE_DATABASE_PASSWORD"] %>
+    host: <%= ENV["DB_HOST"] %>
   cache:
     <<: *primary_production
     database: boostzone_production_cache
