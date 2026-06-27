@@ -87,7 +87,14 @@ test:
 production:
   primary: &primary_production
     <<: *default
+<<<<<<< HEAD
     url: <%= ENV["DATABASE_URL"] %>
+=======
+    database: boostzone_production
+    username: boostzone
+    password: <%= ENV["BOOSTZONE_DATABASE_PASSWORD"] %>
+    host: <%= ENV["DB_HOST"] %>
+>>>>>>> develop
   cache:
     <<: *primary_production
     migrations_paths: db/cache_migrate
