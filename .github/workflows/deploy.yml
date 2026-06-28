@@ -13,9 +13,15 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write   # required to push to ghcr.io
 
     env:
-      DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      # ghcr.io auth — GITHUB_TOKEN is automatically provided by Actions,
+      # no extra secret needed for the registry.
+      KAMAL_REGISTRY_USERNAME: ${{ github.actor }}
+      KAMAL_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
       BOOSTZONE_DATABASE_PASSWORD: ${{ secrets.BOOSTZONE_DATABASE_PASSWORD }}
 
     steps:

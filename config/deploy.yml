@@ -1,9 +1,9 @@
 # Name of your application. Used to uniquely configure containers.
 service: boostzone
 
-# Name of the container image (use your-user/app-name on external registries).
-# For DigitalOcean Container Registry this is "<registry-name>/<image>".
-image: boostzone-registry/boostzone
+# Name of the container image.
+# For ghcr.io this is "ghcr.io/<github-username>/<image>".
+image: ghcr.io/tsnglp/boostzone
 
 # Deploy to these servers.
 servers:
@@ -26,11 +26,10 @@ proxy:
 
 # Where you keep your container images.
 registry:
-  # DigitalOcean Container Registry.
-  server: registry.digitalocean.com
-
-  # For DOCR, both the username and password are a DigitalOcean API token
-  # (with read/write registry scope). They are pulled from .kamal/secrets.
+  # GitHub Container Registry — free and integrated with GitHub Actions.
+  # GITHUB_TOKEN is used automatically in CI; for local deploys set a
+  # GitHub Personal Access Token (PAT) with read:packages + write:packages scope.
+  server: ghcr.io
   username:
     - KAMAL_REGISTRY_USERNAME
   password:
