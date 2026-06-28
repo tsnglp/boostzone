@@ -42,7 +42,9 @@ jobs:
           ssh-private-key: ${{ secrets.KAMAL_SSH_PRIVATE_KEY }}
 
       - name: Trust the droplet host key
-        run: ssh-keyscan -H 209.38.89.31 >> ~/.ssh/known_hosts
+        run: |
+          ssh-keygen -R 209.38.89.31 || true
+          ssh-keyscan -H 209.38.89.31 >> ~/.ssh/known_hosts
 
       - name: Provide the Rails master key
         run: echo "${{ secrets.RAILS_MASTER_KEY }}" > config/master.key
