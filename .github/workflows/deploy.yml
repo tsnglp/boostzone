@@ -1,0 +1,45 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+# Avoid overlapping deploys stepping on each other.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      BOOSTZONE_DATABASE_PASSWORD: ${{ secrets.BOOSTZONE_DATABASE_PASSWORD }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Add SSH key for the droplet
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.KAMAL_SSH_PRIVATE_KEY }}
+
+      - name: Trust the droplet host key
+        run: ssh-keyscan -H 209.38.89.31 >> ~/.ssh/known_hosts
+
+      - name: Provide the Rails master key
+        run: echo "${{ secrets.RAILS_MASTER_KEY }}" > config/master.key
+
+      - name: Deploy with Kamal
+        run: bin/kamal deploy
