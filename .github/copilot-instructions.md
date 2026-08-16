@@ -33,7 +33,7 @@ CI (`.github/workflows/ci.yml`) runs `brakeman`, `bundler-audit`, `importmap aud
 ## Conventions
 
 - **Icons are inline SVGs from a Ruby registry**, not image assets. Use the `icon(name, classes:)` helper in `app/helpers/application_helper.rb`. Content hashes reference icons by symbol (e.g. `icon: :chatbot`); the symbol must exist as a key in the `icons` hash inside the helper. To add a new icon, add a key to that hash.
-- **Theme colors are custom Tailwind tokens** defined in `tailwind.config.js`: `primary` (#1e3a5f), `accent` (#00b4d8), `dark` (#0f1e2e), `light` (#f0f4f8). Use these tokens (e.g. `bg-accent`, `text-primary`) rather than raw hex values.
+- **Theme colors are custom Tailwind v4 tokens** defined in the `@theme` block of `app/assets/tailwind/application.css`: `primary` (#1e3a5f), `accent` (#00b4d8), `dark` (#0f1e2e), `light` (#f0f4f8). Use these tokens (e.g. `bg-accent`, `text-primary`) rather than raw hex values. There is no `tailwind.config.js` — v4 auto-detects content and reads theme from CSS.
 - **Nav links use the `nav_link_to` helper**, which applies active/inactive styling via `current_page?`. Reuse it for navigation rather than bare `link_to`.
 - Views are plain ERB templates in `app/views/pages/`; there are currently no shared partials.
 - Australian/British English spelling is used throughout content ("optimisation", "modernise"). Match it.
