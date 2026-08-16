@@ -2,8 +2,9 @@
 service: boostzone
 
 # Name of the container image.
-# For ghcr.io this is "ghcr.io/<github-username>/<image>".
-image: ghcr.io/tsnglp/boostzone
+# The registry host (registry.server below) is prepended automatically,
+# so this must NOT include "ghcr.io/". For ghcr.io use "<github-username>/<image>".
+image: tsnglp/boostzone
 
 # Deploy to these servers.
 servers:
