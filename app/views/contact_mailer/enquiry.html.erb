@@ -1,0 +1,27 @@
+<h1>New enquiry from the BoostZone website</h1>
+
+<table cellpadding="6" cellspacing="0" border="0">
+  <tr>
+    <td><strong>Name</strong></td>
+    <td><%= @enquiry[:name].presence || "Not provided" %></td>
+  </tr>
+  <tr>
+    <td><strong>Email</strong></td>
+    <td><%= @enquiry[:email].presence || "Not provided" %></td>
+  </tr>
+  <tr>
+    <td><strong>Phone</strong></td>
+    <td><%= @enquiry[:phone].presence || "Not provided" %></td>
+  </tr>
+  <tr>
+    <td><strong>Company</strong></td>
+    <td><%= @enquiry[:company].presence || "Not provided" %></td>
+  </tr>
+  <tr>
+    <td><strong>Service</strong></td>
+    <td><%= @enquiry[:service].presence || "Not specified" %></td>
+  </tr>
+</table>
+
+<h2>Project details</h2>
+<p><%= simple_format(@enquiry[:message].presence || "No message provided.") %></p>

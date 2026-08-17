@@ -1,0 +1,10 @@
+New enquiry from the BoostZone website
+
+Name:    <%= @enquiry[:name].presence || "Not provided" %>
+Email:   <%= @enquiry[:email].presence || "Not provided" %>
+Phone:   <%= @enquiry[:phone].presence || "Not provided" %>
+Company: <%= @enquiry[:company].presence || "Not provided" %>
+Service: <%= @enquiry[:service].presence || "Not specified" %>
+
+Project details:
+<%= @enquiry[:message].presence || "No message provided." %>
