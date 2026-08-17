@@ -23,6 +23,8 @@ jobs:
       KAMAL_REGISTRY_USERNAME: ${{ github.actor }}
       KAMAL_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
       BOOSTZONE_DATABASE_PASSWORD: ${{ secrets.BOOSTZONE_DATABASE_PASSWORD }}
+      POSTMARK_API_TOKEN: ${{ secrets.POSTMARK_API_TOKEN }}
+      TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
 
     steps:
       - name: Checkout code
