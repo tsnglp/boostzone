@@ -46,6 +46,10 @@
           <%= form.text_area :message, rows: 6, required: true, class: "w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" %>
         </div>
 
+        <% if turnstile_site_key.present? %>
+          <div data-controller="turnstile" data-turnstile-sitekey-value="<%= turnstile_site_key %>"></div>
+        <% end %>
+
         <%= form.submit "Submit Enquiry", class: "inline-flex items-center justify-center rounded-full bg-primary px-6 py-3.5 text-base font-semibold text-white transition duration-200 hover:bg-dark" %>
       <% end %>
     </div>

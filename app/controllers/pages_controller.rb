@@ -1,3 +1,5 @@
+require "net/http"
+
 class PagesController < ApplicationController
   before_action :set_page_content, except: :contact_submit
 
@@ -11,6 +13,12 @@ class PagesController < ApplicationController
 
   def contact_submit
     enquiry = params.permit(:name, :email, :phone, :company, :service, :message)
+
+    unless turnstile_verified?
+      redirect_to contact_path, alert: "We couldn't verify that you're human. Please try the form again."
+      return
+    end
+
     name = enquiry[:name].presence || "there"
     service = enquiry[:service].presence
 
@@ -24,6 +32,23 @@ class PagesController < ApplicationController
   end
 
   private
+
+  # Verifies the Cloudflare Turnstile token. Skips verification when no secret is
+  # configured (e.g. local development) so the form remains usable.
+  def turnstile_verified?
+    secret = ENV["TURNSTILE_SECRET_KEY"]
+    return true if secret.blank?
+
+    token = params["cf-turnstile-response"]
+    return false if token.blank?
+
+    uri = URI("https://challenges.cloudflare.com/turnstile/v0/siteverify")
+    response = Net::HTTP.post_form(uri, secret: secret, response: token, remoteip: request.remote_ip)
+    JSON.parse(response.body).fetch("success", false)
+  rescue StandardError => e
+    Rails.logger.error("Turnstile verification error: #{e.class} #{e.message}")
+    false
+  end
 
   def set_page_content
     @services = services_catalog

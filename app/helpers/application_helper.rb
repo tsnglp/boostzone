@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def turnstile_site_key
+    ENV["TURNSTILE_SITE_KEY"]
+  end
+
   def nav_link_to(label, path, mobile: false)
     base_classes = if mobile
       "block rounded-xl px-4 py-3 text-sm font-medium transition duration-200"
