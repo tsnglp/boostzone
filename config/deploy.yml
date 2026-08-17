@@ -41,6 +41,7 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - BOOSTZONE_DATABASE_PASSWORD
+    - POSTMARK_API_TOKEN
   clear:
     # Connect Active Record to the Postgres accessory running on the same host.
     # On the local Kamal docker network the accessory is reachable by name.

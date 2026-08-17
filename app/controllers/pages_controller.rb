@@ -14,6 +14,8 @@ class PagesController < ApplicationController
     name = enquiry[:name].presence || "there"
     service = enquiry[:service].presence
 
+    ContactMailer.enquiry(enquiry.to_h).deliver_later
+
     response = [ "Thanks #{name}, your enquiry has been received." ]
     response << "We'll follow up about #{service.downcase} shortly." if service.present?
     response << "A BoostZone consultant in NSW will be in touch soon."
